@@ -16,4 +16,17 @@ data.forEach((sighting) => {
   });
 });
 
+var inputField = d3.select("datetime");
+var button = d3.select("fitler-btn");
+
+function datechange() {
+  d3.event.preventDefault();
+  console.log(inputField.property("value"));
+  var ufo_table = tableData.filter(sighting => sighting.datetime === inputField.property("value"))
+  displayData(ufo_table)
+};
+
+inputField.on("change", datechange);
+button.on("click", datechange);
+
         
